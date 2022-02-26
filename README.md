@@ -12,6 +12,7 @@ Python 脚本，可将 Markdown 文件中标准图片语法的本地图片，找
 - 单个 md 文件：控制台到脚本所在目录下，使用`python3 uploadpic.py smms <sample.md>`，其中`<smaple.md>`为文件名。
 - 多个 md 文件：控制台到脚本所在目录下，使用`python3 batch.py`。
 
+## 参考链接
 
 - https://www.cnblogs.com/chenlove/p/14038658.html
-- https://zhuanlan.zhihu.com/p/31236511## 参考链接
+- https://zhuanlan.zhihu.com/p/31236511
