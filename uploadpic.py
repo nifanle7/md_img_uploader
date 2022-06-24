@@ -39,15 +39,19 @@ def change_pic_path(article_path,new_article_path, upld_method):
             if upld_method == "smms":
                 for i in range(len(pic_block)):
                     pic_origin_md_url = re.findall(r'\((.*?)\)', pic_block[i])[0]  # 获取插入图片时 md 中图片的位置
+                    print(pic_origin_md_url)
                     if (':' not in pic_origin_md_url):
                         pic_name = pic_origin_md_url.split('/')[-1]  # 获取插入图片时 md 中图片的名
                         pic_origin_url = os.path.join(cfg.image_folder_path, pic_name)  # 获取插入图片的全路径，图片路径在 config 中配置
                         # 本地图片路径正确才会执行上传
                         if (os.path.exists(pic_origin_url)):
                             pic_new_url = smms(pic_origin_url)
-                            print("pic_new_url is {}".format(pic_new_url))
-                            article_content = article_content.replace(pic_origin_md_url, pic_new_url)
-                            new_article_content = article_content
+                            if pic_new_url is None:
+                                print("判空跳过（可能有图片没被上传）")
+                            else:
+                                print("pic_new_url is {}".format(pic_new_url))
+                                article_content = article_content.replace(pic_origin_md_url, pic_new_url)
+                                new_article_content = article_content
 
                         else:
                             print("get_pic_path error")
